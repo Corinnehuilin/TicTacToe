@@ -1,0 +1,47 @@
+[
+    {
+        "type": "title",
+        "title": "Player Names"
+    },
+    {
+        "type": "string",
+        "title": "Player One Name",
+        "desc": "Choose the displayed name for player one",
+        "section": "Player Names",
+        "key": "player_one_name"
+    },
+    {
+        "type": "string",
+        "title": "Player Two Name",
+        "desc": "Choose the displayed name for player two",
+        "section": "Player Names",
+        "key": "player_two_name"
+    },
+    {
+        "type": "title",
+        "title": "AI"
+    },
+    {
+        "type": "string",
+        "title": "AI Name",
+        "desc": "Choose the displayed name for the AI",
+        "section": "AI",
+        "key": "ai_name"
+    },
+    {
+        "type": "options",
+        "title": "AI Player Order",
+        "desc": "Choose whether the AI will play first or second",
+        "section": "AI",
+        "key": "ai_player",
+        "options": ["First", "Second"]
+    },
+    {
+        "type": "options",
+        "title": "AI Move Delay",
+        "desc": "Choose the delayfor the AI's moves",
+        "section": "AI",
+        "key": "ai_move_delay",
+        "options": ["Random", "2 sec.", "None"]
+    }
+]

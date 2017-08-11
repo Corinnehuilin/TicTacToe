@@ -1,0 +1,47 @@
+#:kivy 1.9.1
+
+<Display>:
+    grid: grid
+    message: message
+    TicTacToeGrid:
+        id: grid
+        tile_release_callback: root.human_make_move
+    Message:
+        id: message
+
+<Message>:
+    text: ""
+    font_size: self.width/len(self.text) * 2 if len(self.text) > 25 else self.width/len(self.text) * 1.5 if len(self.text) > 0 else 0
+    color: 0, 0, 0, 1
+    size_hint: 1, 1
+    canvas.before:
+        Color:
+            rgba: self.screencover_color
+        Rectangle:
+            size: self.size
+
+<GridEntry>:
+    on_release: self.release_callback(self.coords[0], self.coords[1])
+    font_size: self.height
+    background_color: 0, 0, 0, 0
+    color: 0, 0, 0, 0.4
+    text: ""
+
+<TicTacToeGrid>:
+    cols: 3
+    canvas:
+        Color:
+            rgba: 0.149, 0.102, 0.051, 1
+        Line:
+            points: self.width/3, self.center_y - (self.height * 0.45), self.width/3, self.center_y + (self.height * 0.45)
+            width: 2
+        Line:
+            points: self.width*2/3, self.center_y - (self.height * 0.45), self.width*2/3, self.center_y + (self.height * 0.45)
+            width: 2
+
+        Line:
+            points: self.center_x - (self.width * 0.45), self.height/3, self.center_x + (self.width * 0.45), self.height/3
+            width: 2
+        Line:
+            points: self.center_x - (self.width * 0.45), self.height*2/3, self.center_x + (self.width * 0.45), self.height*2/3
+            width: 2

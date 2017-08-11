@@ -1,0 +1,81 @@
+#:kivy 1.9.1
+
+#:include display.kv
+#:import display display.Display
+
+ScreenManager:
+    MenuScreen:
+    GameScreen:
+
+<MenuScreen>:
+    name: 'MenuScreen'
+    canvas.before:
+        Color:
+            rgb: 0.6796875, 0.9140625, 0.9140625
+        Rectangle:
+            size: self.size
+            source: 'resources/background.png'
+    GridLayout:
+        cols: 1
+        spacing: '8dp'
+        padding: '8dp'
+        size_hint: (.4, .6)
+        pos_hint: {'x':.3, 'y':.25}
+        Label:
+            font_name: 'resources/Md_Gothic11.ttf'
+            text:'Tic-Tac-Toe'
+            font_size: self.height/2.8
+            color: 0.16, 0.1, 0.1, 1
+
+        Button:
+            size_hint_y: None
+            height: '48dp'
+            text: 'One Player'
+            font_size: self.height * 0.6
+            on_release: root.one_player()
+
+        Button:
+            size_hint_y: None
+            height: '48dp'
+            text: 'Two Player'
+            font_size: self.height * 0.6
+            on_release: root.two_player()
+
+        Button:
+            size_hint_y: None
+            height: '48dp'
+            text: 'Options'
+            font_size: self.height * 0.6
+            on_release: app.open_settings()
+
+<GameScreen>:
+    name: 'GameScreen'
+    game: game
+    BoxLayout:
+        orientation: "vertical"
+        ActionBar:
+            id: actionbar
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    id: action_previous
+                    title: ''
+                    app_icon: ''
+                    app_icon_width: 0.1
+                    app_icon_height: 0
+                    with_previous: False
+                ActionOverflow:
+                ActionButton:
+                    text: 'Menu'
+                    on_release: root.menu()
+                ActionGroup:
+                    text: 'Controls'
+                    ActionButton:
+                        text: 'Undo'
+                        on_release: root.undo_move()
+                    ActionButton:
+                        text: 'Restart'
+                        on_release: root.restart()
+        Display:
+            id: game
+            previous: action_previous
